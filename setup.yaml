@@ -59,6 +59,9 @@ data:
   install.sh: |
     #!/bin/sh
 
+    podman stop ssm-agent
+    podman container rm -f ssm-agent
+
     podman run -d --restart unless-stopped --name ssm-agent \
       --device=/dev/ttyS0 \
       -v /var/run/dbus:/var/run/dbus \
