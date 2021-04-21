@@ -64,7 +64,7 @@ data:
       -v /var/run/dbus:/var/run/dbus \
       -v /run/systemd:/run/systemd \
       -v /etc/sudoers.d:/etc/sudoers.d \
-      jmreicha/ssm-agent:latest
+      scouturier/ssm-agent:0.1
 ---
 apiVersion: apps/v1
 kind: DaemonSet
