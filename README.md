@@ -2,7 +2,7 @@
 
 This project shows how you can install the SSM agent onto ROSA clusters using a Kubernetes DaemonSet. 
 
-This project was heavily inspired by Shekhar Patnaik's [AKS Node Installer Project](https://github.com/patnaikshekhar/AKSNodeInstaller).  
+This project was heavily inspired by Jeremy Cowan's [SSM Agent Daemonset Installer Project](https://github.com/aws-samples/ssm-agent-daemonset-installer).  
 
 ## Installation instructions
 1. Add the `AmazonSSMManagedInstanceCore` policy the the EC2 Instance Profiles of the EC2 Instances. 
