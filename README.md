@@ -1,6 +1,8 @@
 # node-configuration-daemonset
 
-This project shows how you can install the SSM agent onto ROSA clusters using a Kubernetes DaemonSet.  This method for configuring the nodes can be used to customize workers in an EKS Managed Node Group (MNG) after they've been deployed, at least until launch templates are supported.  This project was heavily inspired by Shekhar Patnaik's [AKS Node Installer Project](https://github.com/patnaikshekhar/AKSNodeInstaller).  
+This project shows how you can install the SSM agent onto ROSA clusters using a Kubernetes DaemonSet. 
+
+This project was heavily inspired by Shekhar Patnaik's [AKS Node Installer Project](https://github.com/patnaikshekhar/AKSNodeInstaller).  
 
 ## Installation instructions
 1. Add the `AmazonSSMManagedInstanceCore` policy the the EC2 Instance Profiles of the EC2 Instances. 
