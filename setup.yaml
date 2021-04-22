@@ -58,16 +58,12 @@ metadata:
 data:
   install.sh: |
     #!/bin/sh
-
-    podman stop ssm-agent
-    podman container rm -f ssm-agent
-
-    podman run -d --restart unless-stopped --name ssm-agent \
+    podman run -d --name ssm-agent-pod \
       --device=/dev/ttyS0 \
       -v /var/run/dbus:/var/run/dbus \
       -v /run/systemd:/run/systemd \
       -v /etc/sudoers.d:/etc/sudoers.d \
-      scouturier/ssm-agent:0.1
+      jmreicha/ssm-agent:latest
 ---
 apiVersion: apps/v1
 kind: DaemonSet
