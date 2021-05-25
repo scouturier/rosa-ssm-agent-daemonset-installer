@@ -6,7 +6,11 @@ This project was heavily inspired by Jeremy Cowan's [SSM Agent Daemonset Install
 
 ## Installation instructions
 1. Add the `AmazonSSMManagedInstanceCore` policy the the EC2 Instance Profiles of the EC2 Instances. 
-2. Apply the manifest:
+2. Add Privileged SCC to user ssm-agent-installer
+```
+oc adm policy add-scc-to-user privileged -z ssm-agent-installer -n node-configuration-deamonset
+```
+3. Apply the manifest:
 ```
 oc apply -f setup.yaml
 ```
