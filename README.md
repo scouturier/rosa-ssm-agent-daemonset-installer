@@ -7,16 +7,19 @@ This project was heavily inspired by Jeremy Cowan's [SSM Agent Daemonset Install
 ## Installation instructions
 1. Add the `AmazonSSMManagedInstanceCore` policy the the EC2 Instance Profiles of the EC2 Instances.
 ```
-export ROSA_CLUSTER_NAME="<LOWCASE ROSA CLUSTER NAME>"
-export ROSA_CLUSTER_ID=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${ROSA_CLUSTER_NAME}*worker*" --query 'Reservations[0].Instances[*].{Tags:Tags[?Value == `owned`] | [0].Key}' --output text | cut -d '/' -f 3)
-aws iam attach-role-policy --role-name ${ROSA_CLUSTER_ID}-master-role --policy-arn arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
-aws iam attach-role-policy --role-name ${ROSA_CLUSTER_ID}-worker-role --policy-arn arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+aws iam attach-role-policy --role-name ManagedOpenShift-ControlPlane-Role --policy-arn arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+aws iam attach-role-policy --role-name ManagedOpenShift-Worker-Role --policy-arn arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
 ```
-3. Add Privileged SCC to user ssm-agent-installer
+3. Create namespace
+```
+oc create namespace ssm-agent-installer
+```
+
+4. Add Privileged SCC to user ssm-agent-installer
 ```
 oc adm policy add-scc-to-user privileged -z ssm-agent-installer -n node-configuration-daemonset
 ```
-3. Apply the manifest:
+5. Apply the manifest:
 ```
 oc apply -f https://raw.githubusercontent.com/scouturier/rosa-ssm-agent-daemonset-installer/main/setup.yaml
 ```
