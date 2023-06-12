@@ -12,7 +12,8 @@ aws iam attach-role-policy --role-name ManagedOpenShift-Worker-Role --policy-arn
 ```
 3. Create namespace
 ```
-oc create namespace ssm-agent-installer
+
+oc create namespace node-configuration-daemonset
 ```
 
 4. Add Privileged SCC to user ssm-agent-installer
