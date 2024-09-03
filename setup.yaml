@@ -57,6 +57,8 @@ metadata:
 data:
   install.sh: |
     #!/bin/sh
+    podman stop ssm-agent
+    podman rm ssm-agent
     podman run -d --name ssm-agent \
       --device=/dev/ttyS0 \
       -v /var/run/dbus:/var/run/dbus \
