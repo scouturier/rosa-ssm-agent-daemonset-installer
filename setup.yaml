@@ -88,6 +88,7 @@ spec:
         name: ssm-agent-installer
         securityContext:
           privileged: true
+          runAsUser: 0
         volumeMounts:
         - name: install-script
           mountPath: /tmp
